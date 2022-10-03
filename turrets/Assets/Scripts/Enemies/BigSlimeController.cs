@@ -53,7 +53,7 @@ public class BigSlimeController : MonoBehaviour
     }
 
     void movementOperations(){
-       if(targetPos && !GameManager.GameLose){
+       if(targetPos && !GameManager.GameLose && !GameManager.GameWin){
            transform.position = Vector3.MoveTowards(transform.position,targetPos.position,speed*Time.fixedDeltaTime);
        } 
     }

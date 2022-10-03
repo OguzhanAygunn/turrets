@@ -34,7 +34,7 @@ public class MiniSlimeController : MonoBehaviour
     }
 
     void movementOperations(){
-        if(targetPos && !freezeMove && !GameManager.GameLose)
+        if(targetPos && !freezeMove && !GameManager.GameLose && !GameManager.GameWin)
         transform.position = Vector3.MoveTowards(transform.position,targetPos.position,moveSpeed*Time.deltaTime);
     }
 

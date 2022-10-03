@@ -38,7 +38,6 @@ public class TurretCollision : MonoBehaviour
                     }
                     cameraController.GameDeathController();
                 });
-                Camera.main.DOShakePosition(0.5f,0.5f);
             }
             else{
                 if(!takeDamageState){
@@ -67,6 +66,12 @@ public class TurretCollision : MonoBehaviour
         defaultColor          = myRender.material.color;
         cameraController      = Camera.main.gameObject.GetComponent<CameraController>();
         deathEffectController = Camera.main.gameObject.transform.GetChild(2).gameObject.GetComponent<DeathEffectController>();
+    }
+
+    private void FixedUpdate() {
+        if(!isColl){
+            transform.Rotate(0,260*Time.deltaTime,0);
+        }
     }
 
     private void OnTriggerEnter(Collider other) {

@@ -28,7 +28,7 @@ public class MiniEnemyAController : MonoBehaviour
     }
 
     void MovementOperations(){
-        if(!GameManager.GameLose){
+        if(!GameManager.GameLose && !GameManager.GameWin){
             if(targetPos == null){
                 transform.position = Vector3.MoveTowards(transform.position,playerPos.position,speed*Time.fixedDeltaTime);
             }

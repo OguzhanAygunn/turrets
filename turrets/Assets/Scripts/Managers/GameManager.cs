@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class GameManager
 {
-    public static bool PlayerDestroyable,GameLose;
+    public static bool PlayerDestroyable,GameLose,GameWin;
 
     public static void Start(){
         PlayerDestroyable = false;
