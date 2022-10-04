@@ -27,9 +27,14 @@ public class CoinPanelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //PlayerPrefs.SetInt("Coin",0);
         MyRect = GetComponent<RectTransform>();
         upScale = MyRect.localScale * 1.25f;
         defaultScale = MyRect.localScale;
+        MyRect.localScale = Vector3.zero;
+        MyRect.DOScale(Vector3.one,0.8f).SetEase(ease).SetDelay(0.6f);
+        coinText.text = PlayerPrefs.GetInt("Coin").ToString();
+        coin = PlayerPrefs.GetInt("Coin");
     }
 
     private void FixedUpdate() {
@@ -55,5 +60,8 @@ public class CoinPanelController : MonoBehaviour
     public void DeActiveFunction(){
         deActive = true;
         MyRect.DOScale(Vector3.zero,0.5f).SetEase(ease);
+        GameManager.levelCoinScore = Coin;
+        int coin = PlayerPrefs.GetInt("Coin");
+        PlayerPrefs.SetInt("Coin",coin);
     }
 }

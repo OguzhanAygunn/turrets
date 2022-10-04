@@ -9,6 +9,8 @@ TagManager:
   - Bullet
   - FinishGround
   - CoinTargetPos
+  - Ocean
+  - Coin
   layers:
   - Default
   - TransparentFX

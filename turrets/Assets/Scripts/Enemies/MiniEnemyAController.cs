@@ -6,7 +6,7 @@ using DG.Tweening;
 public class MiniEnemyAController : MonoBehaviour
 {
     Vector3 randomRot,defaultScale;
-    [SerializeField] GameObject spawnEffect;
+    [SerializeField] GameObject spawnEffect,Coin;
     CapsuleCollider MyColl;
     Transform playerPos,targetPos;
     private float speed = 2f,radius = 10f;
@@ -56,5 +56,6 @@ public class MiniEnemyAController : MonoBehaviour
     public void DestroyFunc(){
         Instantiate(spawnEffect,transform.position,Quaternion.identity);
         Destroy(this.gameObject);
+        Instantiate(Coin,transform.position,Quaternion.identity);
     }
 }

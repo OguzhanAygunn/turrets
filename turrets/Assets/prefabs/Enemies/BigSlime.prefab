@@ -473,6 +473,7 @@ MonoBehaviour:
   speed: 4
   spawnPosS: []
   MiniSlime: {fileID: 2283935357397194246, guid: 4a8860c61ebe9f0ae80effe8332f7f4f, type: 3}
+  destroyEffect: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 128

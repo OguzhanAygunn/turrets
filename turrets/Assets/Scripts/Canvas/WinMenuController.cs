@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 public class WinMenuController : MonoBehaviour
 {
     [SerializeField] RectTransform RewardButtonRect,DefaultButtonRect,flag;
     [SerializeField] Ease ButtonEase;
     [SerializeField] Image Background;
     [SerializeField] Color TargetBackgroundColor;
+    [SerializeField] Text rewardButtonText,defaultButtonText;
     [SerializeField] float delay;
     // Start is called before the first frame update
     void Start()
@@ -22,5 +24,11 @@ public class WinMenuController : MonoBehaviour
             DefaultButtonRect.DOScale(Vector3.one,1f).SetEase(ButtonEase);
             flag.DOScale(Vector3.one,1f).SetEase(ButtonEase);
         });
+        defaultButtonText.text = GameManager.levelCoinScore.ToString();
+        rewardButtonText.text = (GameManager.levelCoinScore*2).ToString();
+    }
+
+    public void nextLevelFunc(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

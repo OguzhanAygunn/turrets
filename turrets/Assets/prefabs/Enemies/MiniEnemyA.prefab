@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnEffect: {fileID: 3990073534673913115, guid: 1b295eabd361c67a89fe9a3342940d4c, type: 3}
+  Coin: {fileID: 628791236197526759, guid: dace78cd1382a444a810177b43cf4673, type: 3}
   targetLayer:
     serializedVersion: 2
     m_Bits: 0

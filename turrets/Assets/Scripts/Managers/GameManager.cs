@@ -9,6 +9,7 @@ public static class GameManager
     public static void Start(){
         PlayerDestroyable = false;
         GameLose          = false;
+        GameWin           = false;
         levelCoinScore    = 0;
     }
 }
