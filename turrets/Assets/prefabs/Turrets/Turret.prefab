@@ -129,7 +129,7 @@ MonoBehaviour:
   FirePos: {fileID: 1661976254183881335}
   enemyPos: {fileID: 0}
   bullet: {fileID: 684024934716987584, guid: e941902ce7fda1e44ac1f9a0b95c8d8f, type: 3}
-  bulletSpawnTime: 0.25
+  bulletSpawnTime: 0.1
   bulletPower: 25
   radius: 10
   enemyLayer:

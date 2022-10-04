@@ -42,14 +42,14 @@ public class CameraController : MonoBehaviour
         transform.LookAt(playerPos.position + lookOffset);
     }
 
-    public void GameDeathController(){
+    public void GameDeathController(bool x){
         bool y = false;
 
         foreach(GameObject obj in PlayerCollision.turrets){
             if(obj){y = true;}
         }
 
-        if(y == false && !GameManager.GameLose){
+        if((y == false && !GameManager.GameLose) || x){
             deathEffectController.EffectActive(true);
             DOTween.To(()=> targetOffset, x=> targetOffset = x, LoseOffset, 2);
             playerColorController.deathFunction();

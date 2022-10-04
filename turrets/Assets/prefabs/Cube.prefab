@@ -304,6 +304,7 @@ GameObject:
   - component: {fileID: 1099679815}
   - component: {fileID: 2046181787}
   - component: {fileID: 2046181788}
+  - component: {fileID: 222778948}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Player
@@ -428,6 +429,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeathColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
   ease: 0
+--- !u!114 &222778948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314920553473151965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd8fd382f36785e0b20bf26f4879fba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minY: -0.5
 --- !u!1 &6946337003653450029
 GameObject:
   m_ObjectHideFlags: 0

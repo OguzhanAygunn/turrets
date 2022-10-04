@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rigidbody;
     Transform finishTransform;
     Vector3 finishPos;
+    WinMenuController winMenuController;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
         finishTransform = GameObject.FindGameObjectWithTag("FinishGround").gameObject.transform;
         finishPos = finishTransform.position;
         finishPos.y += finishTransform.localScale.y;
+        winMenuController = GameObject.FindObjectOfType<WinMenuController>();
 
     }
 
@@ -47,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void FinishMoveActive(){
+        fj.gameObject.SetActive(false);
         rigidbody.constraints = RigidbodyConstraints.FreezeAll;
         transform.DOMove(finishPos,1).OnComplete( () => {
             rigidbody.mass = 1;
@@ -56,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
 
             }).OnComplete( () => {
                 transform.DOScale(scale,0.5f);
+            }).OnComplete( () => {
+                winMenuController.ActiveFunction();
             });
         });
     }

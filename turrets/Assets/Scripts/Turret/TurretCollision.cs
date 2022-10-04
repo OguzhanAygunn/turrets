@@ -27,17 +27,7 @@ public class TurretCollision : MonoBehaviour
         set{
             health = value;
             if(Health <= 0 && !destroyActive){
-                PlayerCollision.turrets.Remove(this.gameObject);
-                destroyActive = true;
-                transform.DOScale(defaultScale * 1.5f,0.66f);
-                myRender.material.DOColor(Color.red,0.68f).OnComplete( () => {
-                    Instantiate(destroyEffect,transform.position,Quaternion.identity);
-                    Destroy(this.gameObject);
-                    if(PlayerCollision.turrets.Count <= 0){
-                        Debug.Log("game lose");
-                    }
-                    cameraController.GameDeathController();
-                });
+                DestroyFunction();
             }
             else{
                 if(!takeDamageState){
@@ -72,6 +62,20 @@ public class TurretCollision : MonoBehaviour
         if(!isColl){
             transform.Rotate(0,260*Time.deltaTime,0);
         }
+    }
+
+    public void DestroyFunction(){
+        PlayerCollision.turrets.Remove(this.gameObject);
+        destroyActive = true;
+        transform.DOScale(defaultScale * 1.5f,0.66f);
+        myRender.material.DOColor(Color.red,0.68f).OnComplete( () => {
+            Instantiate(destroyEffect,transform.position,Quaternion.identity);
+            Destroy(this.gameObject);
+            if(PlayerCollision.turrets.Count <= 0){
+                Debug.Log("game lose");
+            }
+            cameraController.GameDeathController(false);
+        });
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -125,6 +129,7 @@ public class TurretCollision : MonoBehaviour
             Rigidbody otherRigid = other.gameObject.GetComponent<Rigidbody>();
             otherRigid.AddExplosionForce(10f,transform.position,20f,3f,ForceMode.Impulse);
         }
+        Debug.Log(PlayerCollision.turrets.Count);
     }
 
 }

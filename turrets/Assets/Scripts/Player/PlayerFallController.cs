@@ -7,6 +7,7 @@ public class PlayerFallController : MonoBehaviour
     [SerializeField] float minY;
     CameraController cameraController;
     Rigidbody rigidbody;
+    bool active;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +22,15 @@ public class PlayerFallController : MonoBehaviour
     }
 
     void mainOperations(){
-        if(transform.position.y < minY && !GameManager.GameLose){
-            cameraController.GameDeathController();
+        if(transform.position.y < minY && !GameManager.GameLose && !active){
+            active = true;
+            cameraController.GameDeathController(true);
             rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+            GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
+            foreach(GameObject turret in turrets){
+                TurretCollision tc = turret.gameObject.GetComponent<TurretCollision>();
+                tc.DestroyFunction();
+            }
         }
     }
 }

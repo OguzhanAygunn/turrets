@@ -7,8 +7,8 @@ using DG.Tweening;
 public class EnemyAController : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
-    [SerializeField] int health;
-    [SerializeField] GameObject MiniEnemy,DestroyEffect;
+    [SerializeField] int health,coinCount;
+    [SerializeField] GameObject MiniEnemy,DestroyEffect,Coin;
     private int Health{
         get{
             return health;
@@ -16,12 +16,12 @@ public class EnemyAController : MonoBehaviour
         set{
             health = value;
             tmpro.text = health.ToString();
-            if(health <= 0){
+            if(health == 0){
                 if(!ScaleDown){
                     ScaleDown = true;
                     transform.DOScale(Vector3.zero,0.33f).OnComplete( () => {
                         Instantiate(DestroyEffect,transform.position,Quaternion.identity);
-                        Destroy(this.gameObject);
+                        StartCoroutine(DeathFunction());
                     });
                 }
             }
@@ -59,9 +59,26 @@ public class EnemyAController : MonoBehaviour
         return newPos;
     }
 
+    public Vector3 CoinSpawnPos()
+    {
+        Vector3 pos = Random.insideUnitSphere*0.1f;
+        Vector3 newPos = transform.position + pos;
+        newPos.y = transform.position.y + .5f;
+        return newPos;
+    }
+
+    IEnumerator DeathFunction(){
+        while(coinCount > 0){
+            Instantiate(Coin,CoinSpawnPos(),Quaternion.identity);
+            coinCount--;
+            yield return new WaitForSeconds(0.05f);
+        }
+        Destroy(this.gameObject);
+        yield return null;
+    }
 
     private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.CompareTag("Bullet")){
+        if(other.gameObject.CompareTag("Bullet") && health >= 0){
             if(ScaleUp == false){
                 ScaleUp = true;
                 upScale = transform.localScale * 1.1f;
