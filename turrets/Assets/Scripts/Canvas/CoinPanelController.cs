@@ -33,6 +33,7 @@ public class CoinPanelController : MonoBehaviour
         defaultScale = MyRect.localScale;
         MyRect.localScale = Vector3.zero;
         MyRect.DOScale(Vector3.one,0.8f).SetEase(ease).SetDelay(0.6f);
+        PlayerPrefs.SetInt("Coin",1200);
         coinText.text = PlayerPrefs.GetInt("Coin").ToString();
         coin = PlayerPrefs.GetInt("Coin");
     }
@@ -61,7 +62,6 @@ public class CoinPanelController : MonoBehaviour
         deActive = true;
         MyRect.DOScale(Vector3.zero,0.5f).SetEase(ease);
         GameManager.levelCoinScore = Coin;
-        int coin = PlayerPrefs.GetInt("Coin");
         PlayerPrefs.SetInt("Coin",coin);
     }
 }
