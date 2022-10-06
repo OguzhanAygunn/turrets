@@ -8,15 +8,16 @@ public class BigSlimeController : MonoBehaviour
     Collider[] hitColliders = new Collider[1];
     [SerializeField] float radius,speed;
     [SerializeField] private Transform[] spawnPosS;
-    [SerializeField] GameObject MiniSlime,destroyEffect;
-    int health = 40,enemyCount = 15;
+    [SerializeField] GameObject MiniSlime,destroyEffect,Coin;
+    int health = 100,enemyCount = 15,coinCount = 50;
     int Health{
         get{
             return health;
         }
         set{
+            
             health = value;
-            if(health <= 0){
+            if(health == 0){
                 Destroy(myColl);
                 while(enemyCount > 0){
                     MiniSlimeController msc = Instantiate(MiniSlime,MiniEnemyPos(),Quaternion.identity).gameObject.GetComponent<MiniSlimeController>();
@@ -24,17 +25,25 @@ public class BigSlimeController : MonoBehaviour
                     enemyCount--;
                 }
                 Instantiate(destroyEffect,transform.position,Quaternion.identity);
-                Destroy(this.gameObject);
+                StartCoroutine(coinSpawner());
+                transform.DOScale(Vector3.zero,0.2f);
             }
         }
     }
     [SerializeField] LayerMask targetLayer;
     Transform targetPos,playerPos;
-    bool takeDamageState,changeScaleActive;
+    bool takeDamageState,changeScaleActive,moveFreeze;
     Collider myColl;
     Vector3 targetScale;
     Material material;
     // Start is called before the first frame update
+
+    private void Awake() {
+        Vector3 pos = transform.position;
+        pos.y = 80f;
+        transform.position = pos;
+    }
+
     void Start()
     {
         myColl      = GetComponent<Collider>();
@@ -53,7 +62,7 @@ public class BigSlimeController : MonoBehaviour
     }
 
     void movementOperations(){
-       if(targetPos && !GameManager.GameLose && !GameManager.GameWin){
+       if(targetPos && !GameManager.GameLose && !GameManager.GameWin && !moveFreeze){
            transform.position = Vector3.MoveTowards(transform.position,targetPos.position,speed*Time.fixedDeltaTime);
        } 
     }
@@ -89,8 +98,20 @@ public class BigSlimeController : MonoBehaviour
         return newPos;
     }
 
+    IEnumerator coinSpawner(){
+        while(coinCount > 0){
+            Vector3 pos = transform.position;
+            pos.y = 2f;
+            Instantiate(Coin,pos,Quaternion.identity);
+            coinCount--;
+            yield return new WaitForSeconds(0.05f);
+        }
+        Destroy(this.gameObject);
+    }
+
     private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.CompareTag("Bullet") && !takeDamageState){
+        string tag = other.gameObject.tag;
+        if(tag == "Bullet" && !takeDamageState){
             takeDamageFunction();
             targetScale = transform.localScale;
             targetScale *= 1.02f;
@@ -98,6 +119,31 @@ public class BigSlimeController : MonoBehaviour
             color.r += 0.033f;
             material.color = color;
             
+        }
+        if(tag == "Player" || tag == "Turret"){
+            moveFreeze = true;
+        }
+        
+    }
+
+    private void OnCollisionExit(Collision other) {
+        string tag = other.gameObject.tag;
+        if(tag == "Player" || tag == "Turret"){
+            moveFreeze = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        string tag = other.gameObject.tag;
+        if(tag == "Player" || tag == "Turret"){
+            moveFreeze = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        string tag = other.gameObject.tag;
+        if(tag == "Player" || tag == "Turret"){
+            moveFreeze = false;
         }
     }
 

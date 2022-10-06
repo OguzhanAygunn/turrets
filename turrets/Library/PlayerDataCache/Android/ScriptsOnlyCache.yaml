@@ -16,12 +16,15 @@ ScriptsOnlyBuild:
     - LowPolyWater.LowPolyWater
     - MiniEnemyAController
     - MiniSlimeController
+    - OceanController
     - PlayerCollision
     - PlayerColorController
     - PlayerFallController
     - PlayerMovement
     - PlayerRotation
     - PlayerScaleController
+    - ShopMenuPanel
+    - TapToStart
     - TurretCollision
     - TurretColorController
     - TurretGunRotation
@@ -101,85 +104,91 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1516}
     - Class: 114
-      Script: {instanceID: 1552}
+      Script: {instanceID: 1556}
     - Class: 114
-      Script: {instanceID: 1700}
+      Script: {instanceID: 1704}
     - Class: 114
-      Script: {instanceID: 1736}
+      Script: {instanceID: 1740}
     - Class: 114
-      Script: {instanceID: 1744}
+      Script: {instanceID: 1748}
     - Class: 114
-      Script: {instanceID: 1834}
+      Script: {instanceID: 1838}
     - Class: 114
-      Script: {instanceID: 1846}
+      Script: {instanceID: 1850}
     - Class: 114
-      Script: {instanceID: 1904}
+      Script: {instanceID: 1908}
     - Class: 114
-      Script: {instanceID: 2172}
+      Script: {instanceID: 1936}
     - Class: 114
-      Script: {instanceID: 2176}
+      Script: {instanceID: 2178}
     - Class: 114
-      Script: {instanceID: 2186}
+      Script: {instanceID: 2182}
     - Class: 114
-      Script: {instanceID: 2188}
+      Script: {instanceID: 2192}
     - Class: 114
-      Script: {instanceID: 2536}
+      Script: {instanceID: 2194}
     - Class: 114
-      Script: {instanceID: 2538}
+      Script: {instanceID: 2438}
     - Class: 114
-      Script: {instanceID: 2664}
+      Script: {instanceID: 2544}
     - Class: 114
-      Script: {instanceID: 2690}
+      Script: {instanceID: 2546}
     - Class: 114
-      Script: {instanceID: 2868}
+      Script: {instanceID: 2672}
+    - Class: 114
+      Script: {instanceID: 2698}
     - Class: 114
       Script: {instanceID: 2876}
     - Class: 114
-      Script: {instanceID: 2972}
+      Script: {instanceID: 2884}
     - Class: 114
-      Script: {instanceID: 3070}
+      Script: {instanceID: 2980}
     - Class: 114
-      Script: {instanceID: 3210}
+      Script: {instanceID: 3078}
     - Class: 114
-      Script: {instanceID: 3358}
+      Script: {instanceID: 3104}
     - Class: 114
-      Script: {instanceID: 3398}
+      Script: {instanceID: 3218}
     - Class: 114
-      Script: {instanceID: 3442}
+      Script: {instanceID: 3366}
     - Class: 114
-      Script: {instanceID: 3444}
+      Script: {instanceID: 3406}
     - Class: 114
-      Script: {instanceID: 3474}
+      Script: {instanceID: 3450}
     - Class: 114
-      Script: {instanceID: 3528}
+      Script: {instanceID: 3452}
     - Class: 114
-      Script: {instanceID: 3538}
+      Script: {instanceID: 3482}
     - Class: 114
-      Script: {instanceID: 3572}
+      Script: {instanceID: 3536}
     - Class: 114
-      Script: {instanceID: 3654}
+      Script: {instanceID: 3546}
     - Class: 114
-      Script: {instanceID: 3812}
+      Script: {instanceID: 3580}
     - Class: 114
-      Script: {instanceID: 3830}
+      Script: {instanceID: 3662}
     - Class: 114
-      Script: {instanceID: 4182}
+      Script: {instanceID: 3820}
     - Class: 114
-      Script: {instanceID: 4190}
+      Script: {instanceID: 3838}
     - Class: 114
-      Script: {instanceID: 4236}
+      Script: {instanceID: 4188}
     - Class: 114
-      Script: {instanceID: 4302}
+      Script: {instanceID: 4196}
     - Class: 114
-      Script: {instanceID: 4426}
+      Script: {instanceID: 4242}
     - Class: 114
-      Script: {instanceID: 4516}
+      Script: {instanceID: 4308}
     - Class: 114
-      Script: {instanceID: 4610}
+      Script: {instanceID: 4432}
     - Class: 114
-      Script: {instanceID: 4722}
+      Script: {instanceID: 4522}
     - Class: 114
-      Script: {instanceID: 66418}
+      Script: {instanceID: 4616}
+    - Class: 114
+      Script: {instanceID: 4728}
+    - Class: 114
+      Script: {instanceID: 4762}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -219,6 +228,18 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 69415240821be7986b27e72bf9609a30
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
+  - hash:
+      serializedVersion: 2
+      Hash: aba7b2852ef61d175dd9602e7723d5e5
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Mask
   - hash:
       serializedVersion: 2
       Hash: 824e8d4cb47ffd88ddf959dbd4526585
@@ -323,6 +344,12 @@ ScriptsOnlyBuild:
     className: EnemyAController
   - hash:
       serializedVersion: 2
+      Hash: d7bd3aba47b13abc828b6d87ecbb796b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ShopMenuPanel
+  - hash:
+      serializedVersion: 2
       Hash: 2d143e103df2247787ec7ae04cb6eb28
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -389,6 +416,12 @@ ScriptsOnlyBuild:
     className: SkyboxRotator
   - hash:
       serializedVersion: 2
+      Hash: f6116de6b2cbd0c2a77b672979082309
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CoinPanelController
+  - hash:
+      serializedVersion: 2
       Hash: a325152ad9563ed900af221c132fea36
     assemblyName: UnityEngine.Advertisements.dll
     namespaceName: UnityEngine.Advertisements.Utilities
@@ -401,7 +434,7 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
-      Hash: 9b8327afb68011a0074b914ec9f4e342
+      Hash: 13f063e3c3d9b74b6238353d53e0aa87
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BigSlimeController
@@ -539,6 +572,12 @@ ScriptsOnlyBuild:
     className: TMP_SubMesh
   - hash:
       serializedVersion: 2
+      Hash: 8b242a40279bcf5edd812cb822b6c963
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TapToStart
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -555,12 +594,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ToggleGroup
-  - hash:
-      serializedVersion: 2
-      Hash: 69415240821be7986b27e72bf9609a30
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
   - hash:
       serializedVersion: 2
       Hash: c068a0cf81494a540f00d112d5c1ddf7
@@ -617,7 +650,7 @@ ScriptsOnlyBuild:
     className: PlayerFallController
   - hash:
       serializedVersion: 2
-      Hash: 29f872dc6ad452d6a0203b9600419467
+      Hash: 3ebde1a1bc159c835ead0f294014fa05
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MiniSlimeController
@@ -773,12 +806,6 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: aba7b2852ef61d175dd9602e7723d5e5
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Mask
-  - hash:
-      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -887,6 +914,12 @@ ScriptsOnlyBuild:
     className: BulletController
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OceanController
+  - hash:
+      serializedVersion: 2
       Hash: f9a3fa795fdc45b44f33cc2a28c5a2ca
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -915,12 +948,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: f6116de6b2cbd0c2a77b672979082309
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CoinPanelController
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

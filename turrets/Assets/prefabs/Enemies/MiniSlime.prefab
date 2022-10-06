@@ -378,6 +378,9 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 128
+  DeathEffect: {fileID: 3745216376294051142, guid: eeffb524989765ab8b15cf3fc0091aff, type: 3}
+  Coin: {fileID: 628791236197526759, guid: dace78cd1382a444a810177b43cf4673, type: 3}
+  health: 10
 --- !u!1 &2284156246368110066
 GameObject:
   m_ObjectHideFlags: 0

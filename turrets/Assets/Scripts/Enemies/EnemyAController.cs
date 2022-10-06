@@ -15,7 +15,7 @@ public class EnemyAController : MonoBehaviour
         }
         set{
             health = value;
-            tmpro.text = health.ToString();
+            tmpro.text = (health >= 0) ? health.ToString() : "0";
             if(health == 0){
                 if(!ScaleDown){
                     ScaleDown = true;
@@ -35,6 +35,11 @@ public class EnemyAController : MonoBehaviour
     bool ScaleUp,ScaleDown;
     Vector3 upScale,DefaultScale;
     // Start is called before the first frame update
+    private void Awake() {
+        Vector3 pos = transform.position;
+        pos.y = 80f;
+        transform.position = pos;
+    }
     void Start()
     {
         TextObj = transform.GetChild(0).gameObject;
@@ -43,12 +48,6 @@ public class EnemyAController : MonoBehaviour
         tmpro = TMPRender.GetComponent<TextMeshPro>();
         tmpro.text = health.ToString();
         DefaultScale = transform.localScale;
-    }
-
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-
     }
 
     public Vector3 MiniEnemyPos()

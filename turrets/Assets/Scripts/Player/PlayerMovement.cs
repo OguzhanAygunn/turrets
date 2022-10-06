@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     void MovementOperations(){
         if(!GameManager.GameWin){
             if(Input.touchCount > 0 && !GameManager.GameLose){
-                float exSpeed = PlayerPrefs.GetFloat("slot1Value");
+                float exSpeed = PlayerPrefs.GetFloat("Slot1Value");
                 transform.position += new Vector3(fj.Horizontal,0,fj.Vertical) * MoveSpeed * Time.deltaTime * exSpeed;
             }
         }

@@ -29,7 +29,7 @@ public class TurretGunRotation : MonoBehaviour
         LookatOperation();
 
         if(enemyPos == null){
-            hitColliders = Physics.OverlapSphere(transform.position, radius, enemyLayer);
+            hitColliders = Physics.OverlapSphere(transform.position, radius * PlayerPrefs.GetFloat("Slot3Value"), enemyLayer);
                foreach(var obj in hitColliders){
                 enemyPos = obj.transform;
             }
@@ -38,18 +38,22 @@ public class TurretGunRotation : MonoBehaviour
 
     IEnumerator BulletSpawnerFunc(){
         while(true){
-            if(enemyPos != null){
+            if(enemyPos != null && turretCollision.isColl){
                 GameObject bullet_ = Instantiate(bullet,FirePos.position,transform.rotation);
                 Rigidbody bulletRigid = bullet_.GetComponent<Rigidbody>();
                 bulletRigid.velocity = transform.TransformDirection(Vector3.forward * bulletPower);
             }
-            yield return new WaitForSeconds(bulletSpawnTime);
+            yield return new WaitForSeconds(bulletSpawnTime / PlayerPrefs.GetFloat("Slot2Value"));
         }
     }
 
     void LookatOperation(){
         if(enemyPos){
             transform.LookAt(enemyPos.position);
+            Vector3 localeuler = transform.localEulerAngles;
+            localeuler.x = 0;
+            localeuler.z = 0;
+            transform.localEulerAngles = localeuler;
         }
     }
 

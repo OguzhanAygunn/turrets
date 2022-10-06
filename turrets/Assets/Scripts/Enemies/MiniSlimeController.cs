@@ -9,7 +9,23 @@ public class MiniSlimeController : MonoBehaviour
     [SerializeField] float radius;
     Collider[] hitColliders = new Collider[1];
     [SerializeField] LayerMask targetLayer;
+    [SerializeField] GameObject DeathEffect,Coin;
     bool freezeMove;
+    [SerializeField] private int health;
+    public int Health{
+        get{
+            return health;
+        }
+        set{
+            health = value;
+            if(health == 0){
+                Instantiate(DeathEffect,transform.position,Quaternion.identity);
+                Instantiate(Coin,transform.position,Quaternion.identity);
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,4 +58,12 @@ public class MiniSlimeController : MonoBehaviour
         if(targetPos)
         transform.LookAt(targetPos.position,transform.up);
     }
+
+    private void OnCollisionEnter(Collision other) {
+        string tag = other.gameObject.tag;
+        if(tag == "Bullet"){
+            Health--;
+        }
+    }
+
 }

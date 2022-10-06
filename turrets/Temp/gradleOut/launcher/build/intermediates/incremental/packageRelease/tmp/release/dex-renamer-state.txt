@@ -1,0 +1,4 @@
+#Thu Oct 06 04:54:48 EET 2022
+base.0=/home/antenovis/Belgeler/GitHub/turrets/turrets/Temp/gradleOut/launcher/build/intermediates/dex/release/mergeDexRelease/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
