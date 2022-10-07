@@ -9,7 +9,7 @@ public class BigSlimeController : MonoBehaviour
     [SerializeField] float radius,speed;
     [SerializeField] private Transform[] spawnPosS;
     [SerializeField] GameObject MiniSlime,destroyEffect,Coin;
-    int health = 100,enemyCount = 15,coinCount = 50;
+    int health = 75,enemyCount = 15,coinCount = 50;
     int Health{
         get{
             return health;
@@ -32,16 +32,18 @@ public class BigSlimeController : MonoBehaviour
     }
     [SerializeField] LayerMask targetLayer;
     Transform targetPos,playerPos;
-    bool takeDamageState,changeScaleActive,moveFreeze;
+    bool takeDamageState,changeScaleActive,moveFreeze,collGround;
     Collider myColl;
     Vector3 targetScale;
     Material material;
+    Rigidbody rigidbody;
     // Start is called before the first frame update
 
     private void Awake() {
         Vector3 pos = transform.position;
         pos.y = 80f;
         transform.position = pos;
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     void Start()
@@ -122,6 +124,12 @@ public class BigSlimeController : MonoBehaviour
         }
         if(tag == "Player" || tag == "Turret"){
             moveFreeze = true;
+        }
+        if(other.gameObject.layer == LayerMask.NameToLayer("Ground")){
+            if(!collGround){
+                rigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+                collGround = true;
+            }
         }
         
     }

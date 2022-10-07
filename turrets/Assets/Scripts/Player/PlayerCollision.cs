@@ -8,6 +8,7 @@ public class PlayerCollision : MonoBehaviour
     PlayerMovement playerMovement;
     WinMenuController winMenuController;
     CoinPanelController cpc;
+    CameraController cameraController;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,15 @@ public class PlayerCollision : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         winMenuController = GameObject.FindObjectOfType<WinMenuController>();
         cpc = GameObject.FindObjectOfType<CoinPanelController>();
+        cameraController = Camera.main.gameObject.GetComponent<CameraController>();
+    }
+
+    private void FixedUpdate() {
+        if(GameManager.FirstColl && !GameManager.GameLose){
+            if(GameObject.FindGameObjectsWithTag("TakeTurret").Length == 0){
+                cameraController.GameDeathController(true);
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision other) {

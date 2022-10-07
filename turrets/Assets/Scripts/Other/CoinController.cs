@@ -57,14 +57,14 @@ public class CoinController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         string tag = other.gameObject.tag;
-        if((tag == "Player" || tag == "Turret") && !isColl){
+        if((tag == "Player" || tag == "TakeTurret") && !isColl){
             CollFunction();
         }
     }
 
     private void OnTriggerEnter(Collider other) {
         string tag = other.gameObject.tag;
-        if((tag == "Player" || tag == "Turret") && !isColl){
+        if((tag == "Player" || tag == "TakeTurret") && !isColl){
             CollFunction();
         }
     }

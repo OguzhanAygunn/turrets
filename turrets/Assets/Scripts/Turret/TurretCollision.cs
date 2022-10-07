@@ -79,8 +79,11 @@ public class TurretCollision : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Turret")) && !isColl) && !destroyActive){
-
+        if(((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("TakeTurret")) && !isColl) && !destroyActive){
+            GameManager.FirstColl = (GameManager.FirstColl == false) ? true : GameManager.FirstColl;
+            if(transform.CompareTag("Turret")){
+                transform.tag = "TakeTurret";
+            }
             PlayerCollision.turrets.Add(this.gameObject);
             gameObject.layer = 7;
             isColl = true;
