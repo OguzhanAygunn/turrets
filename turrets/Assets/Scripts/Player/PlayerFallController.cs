@@ -26,7 +26,7 @@ public class PlayerFallController : MonoBehaviour
             active = true;
             cameraController.GameDeathController(true);
             rigidbody.constraints = RigidbodyConstraints.FreezeAll;
-            GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
+            GameObject[] turrets = GameObject.FindGameObjectsWithTag("TakeTurret");
             foreach(GameObject turret in turrets){
                 TurretCollision tc = turret.gameObject.GetComponent<TurretCollision>();
                 tc.DestroyFunction();

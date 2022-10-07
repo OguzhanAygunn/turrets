@@ -67,12 +67,12 @@ public class EnemyAController : MonoBehaviour
     }
 
     IEnumerator DeathFunction(){
+        Destroy(this.gameObject);
         while(coinCount > 0){
             Instantiate(Coin,CoinSpawnPos(),Quaternion.identity);
             coinCount--;
             yield return new WaitForSeconds(0.05f);
         }
-        Destroy(this.gameObject);
         yield return null;
     }
 

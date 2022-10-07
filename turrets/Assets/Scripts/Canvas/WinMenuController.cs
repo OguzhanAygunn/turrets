@@ -6,7 +6,7 @@ using DG.Tweening;
 using UnityEngine.SceneManagement;
 public class WinMenuController : MonoBehaviour
 {
-    [SerializeField] RectTransform RewardButtonRect,DefaultButtonRect,flag;
+    [SerializeField] RectTransform RewardButtonRect,DefaultButtonRect,flag,winRect;
     [SerializeField] Ease ButtonEase;
     [SerializeField] Image Background;
     [SerializeField] Color TargetBackgroundColor;
@@ -23,6 +23,7 @@ public class WinMenuController : MonoBehaviour
             RewardButtonRect.DOScale(Vector3.one,1.1f).SetEase(ButtonEase);
             DefaultButtonRect.DOScale(Vector3.one,1f).SetEase(ButtonEase);
             flag.DOScale(Vector3.one,1f).SetEase(ButtonEase);
+            winRect.DOScale(Vector3.one,1f).SetEase(ButtonEase);
         });
         defaultButtonText.text = GameManager.levelCoinScore.ToString();
         rewardButtonText.text = (GameManager.levelCoinScore*2).ToString();

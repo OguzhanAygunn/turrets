@@ -94,7 +94,7 @@ public class BigSlimeController : MonoBehaviour
 
     public Vector3 MiniEnemyPos()
     {
-        Vector3 pos = Random.insideUnitSphere*0.02f;
+        Vector3 pos = Random.insideUnitSphere*0.002f;
         Vector3 newPos = transform.position + pos;
         newPos.y = transform.position.y;
         return newPos;
@@ -122,7 +122,7 @@ public class BigSlimeController : MonoBehaviour
             material.color = color;
             
         }
-        if(tag == "Player" || tag == "Turret"){
+        if(tag == "Player" || tag == "TakeTurret"){
             moveFreeze = true;
         }
         if(other.gameObject.layer == LayerMask.NameToLayer("Ground")){
@@ -136,21 +136,21 @@ public class BigSlimeController : MonoBehaviour
 
     private void OnCollisionExit(Collision other) {
         string tag = other.gameObject.tag;
-        if(tag == "Player" || tag == "Turret"){
+        if(tag == "Player" || tag == "TakeTurret"){
             moveFreeze = false;
         }
     }
 
     private void OnTriggerEnter(Collider other) {
         string tag = other.gameObject.tag;
-        if(tag == "Player" || tag == "Turret"){
+        if(tag == "Player" || tag == "TakeTurret"){
             moveFreeze = true;
         }
     }
 
     private void OnTriggerExit(Collider other) {
         string tag = other.gameObject.tag;
-        if(tag == "Player" || tag == "Turret"){
+        if(tag == "Player" || tag == "TakeTurret"){
             moveFreeze = false;
         }
     }
